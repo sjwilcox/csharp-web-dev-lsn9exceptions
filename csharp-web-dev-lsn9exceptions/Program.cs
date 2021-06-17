@@ -32,17 +32,28 @@ namespace csharp_web_dev_lsn9exceptions
 
         static void CheckFileExtension(string fileName)
         {
-            
             int point = 0;
-            if(fileName.Contains(".cs"))
+            try
             {
-                point++;
-                Console.WriteLine($"Correct extension {point} point awarded.");
+                
+                if (fileName.Contains(".cs"))
+                {
+                    point++;
+                    Console.WriteLine($"Correct extension {point} point awarded.");
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException($"YOU FORGOT TO SUBMIT IT AS A .cs FILE...{point} for you!!!");
+                }
             }
-            else
+            catch(ArgumentOutOfRangeException e) 
             {
-                Console.WriteLine($"Incorrect file extension {point} points awarded.");
+                
+                Console.WriteLine($"Your file is not in the correct format. {point} for YOU!!!");
+                
             }
+
+            
 
         }
         
